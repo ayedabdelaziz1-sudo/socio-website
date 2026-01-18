@@ -508,24 +508,39 @@
         
         
         /* Style pour les images de l'analyse */
-        .analysis-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin: 1rem 0;
-            border: 1px solid #eee;
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
         }
-        
+
         .analysis-card {
             background: #fff;
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .analysis-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .analysis-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 992px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         #etranger {
@@ -1169,38 +1184,54 @@
                 </div>
             </div>
     
-      			<div class="subsection-analyse" style="margin-top: 4rem;">
-      				<h3 style="font-size: 1.8rem; color: var(--secondary); margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light);">II. Analyse de la Perception Citoyenne</h3>
-      				
-      				<div style="margin-bottom: 3rem; background: var(--light); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--secondary);">
-      					<p><strong>Profil des sondés :</strong> Sur 23 réponses recueillies, 52,2% ont entre 18 et 20 ans et 43,5% ont entre 20 et 25 ans. Échantillon majoritairement <strong>Génération Z</strong>.</p>
-      					<p style="margin-top: 0.5rem;"><strong>Fait notable :</strong> 21,7% ont déjà ressenti une expérience négative liée à la surveillance.</p>
-      				</div>
-      
-      				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-      					<div class="analysis-card">
-      						<h4 style="color: var(--primary); margin-bottom: 1rem; border-left: 3px solid var(--secondary); padding-left: 10px;">Sécurité et Intimité</h4>
-      						<img src="image1.png" alt="Graphique sécurité" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555; margin-bottom: 1.5rem;">L'opinion est partagée sur l'efficacité réelle de la surveillance pour améliorer la sécurité.</p>
-      						<img src="image2.png" alt="Graphique vie privée" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555;">Réticence marquée à sacrifier la vie privée numérique pour la sécurité.</p>
-      					</div>
-      
-      					<div class="analysis-card">
-      						<h4 style="color: var(--primary); margin-bottom: 1rem; border-left: 3px solid var(--secondary); padding-left: 10px;">Rapport aux Autorités</h4>
-      						<img src="image3.png" alt="Graphique confiance" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555; margin-bottom: 1.5rem;">Le degré de confiance envers l'État est globalement bas.</p>
-      						<img src="image4.png" alt="Graphique dangers" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555;">Crainte majeure du détournement des données par des entités politiques.</p>
-      					</div>
-      
-      					<div class="analysis-card">
-      						<h4 style="color: var(--primary); margin-bottom: 1rem; border-left: 3px solid var(--secondary); padding-left: 10px;">Cadre d'Application</h4>
-      						<img src="image5.png" alt="Graphique reconnaissance faciale" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555; margin-bottom: 1.5rem;">Acceptation de la reconnaissance faciale uniquement sous menace confirmée.</p>
-      						<img src="image6.png" alt="Graphique proportionnalité" class="analysis-img">
-      						<p style="font-size: 0.95rem; color: #555;">Les mesures sont jugées proportionnées mais pas forcément efficaces.</p>
-      					</div>
+            <div class="subsection-analyse" style="margin-top: 4rem;">
+            <h3 style="font-size: 1.8rem; color: var(--secondary); margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light);">II. Analyse de la Perception Citoyenne</h3>
+            
+            <div style="margin-bottom: 3rem; background: var(--light); padding: 2rem; border-radius: 10px; border-left: 5px solid var(--secondary);">
+                <h4 style="margin-bottom: 1rem; color: var(--primary);">Les personnes sondées</h4>
+                <p>Sur 23 réponses à notre questionnaire volontaire, 52,2% des personnes qui y ont participé ont entre 18 et 20 ans, 43,5% ont entre 20 et 25 ans et 4,3% ont plus de 35 ans. On a donc globalement des réponses de personnes issues de la génération Z qui est très connectée.</p>
+                <p style="margin-top: 1rem; font-weight: bold; color: var(--accent);">21,7% des personnes sondées disent avoir déjà ressenti une expérience négative liée à un dispositif de surveillance ou de partage de données.</p>
+            </div>
+
+            <div class="analysis-grid">
+                
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Amélioration de la sécurité au quotidien grâce à la surveillance numérique</h4>
+                    <img src="image1.png" alt="Graphique 1" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">L'opinion est mitigée : l'efficacité perçue de la technologie ne suffit pas à rassurer unanimement les citoyens sur leur sécurité quotidienne.</p>
+                </div>
+
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Sacrifice de la vie privée numérique au profit de la sécurité</h4>
+                    <img src="image2.png" alt="Graphique 2" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">Contrairement aux idées reçues, une part importante des sondés accepte le compromis de céder des données privées si cela garantit une meilleure protection publique.</p>
+                </div>
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Degré de confiance envers l’État et les autorités concernant l’usage des données personnelles collectées</h4>
+                    <img src="image3.png" alt="Graphique 3" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">Les avis sur cette question sont plutôt partagés mais globalement le niveau de confiance n’est pas très élevé.</p>
+                </div>
+
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Les dangers de l’extension de la surveillance numérique</h4>
+                    <img src="image4.png" alt="Graphique 4" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">Globalement, on voit que les personnes sondées ont peur que leurs données soient utilisées à leur insu par des entités politiques.</p>
+                </div>
+
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Usage de ces technologies dans des situations où la sécurité est fragile</h4>
+                    <img src="image5.png" alt="Graphique 5" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">Les personnes sondées ne sont pas contre le fait qu’on utilise la reconnaissance faciale dans les endroits où il y a beaucoup de circulation mais uniquement si une menace est confirmée et non pas à titre préventif.</p>
+                </div>
+
+                <div class="analysis-card">
+                    <h4 style="color: var(--primary); min-height: 3.5em;">Rationalité des mesures de surveillance actuelles</h4>
+                    <img src="image6.png" alt="Graphique 6" class="analysis-img">
+                    <p style="font-size: 0.95rem; color: #555; margin-top: auto;">Globalement, l’échantillon de population sondé pense que les mesures actuelles sont plutôt proportionnées sans pour autant penser qu’elles sont les plus efficaces.</p>
+                </div>
+
+            </div>
+        </div>
       				</div>
       			</div>
     		</div>
@@ -1527,4 +1558,3 @@
     </script>
 </body>
 </html>
-
